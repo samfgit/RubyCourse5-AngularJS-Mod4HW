@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Restaurant Menu</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://v4-alpha.getbootstrap.com/dist/css/bootstrap.min.css">
+    <script src="lib/angular.min.js"></script>
+    <script src="lib/angular-ui-router.min.js"></script>
+    <script src="app.js"></script>
+    <style>
+    	.listItem {
+    		margin-top: 10px;
+    	}
+    	.userMsg {
+    		padding: 5px; 
+    		width: auto;
+    	}
+    	.tip {
+    		color: green;
+    	}
+    	.warning {
+    		color:green;
+    	}
+    	.error {
+    		color:red;
+    	}
+    	.remove-btn {
+		    margin-left: 8px;
+    	}
+    </style>
+</head>
+<body ng-app="MenuSearch">
+	<div class="container" ng-controller="MenuApp as menu">
+		<div class="row">
+			<div class="col-md-10" >
+				<br>
+				<h1>Welcome to Our Restaurant</h1>
+				<br>
+			    <div class="input-group input-group-md">
+			      <input type="text" class="form-control" ng-model="list.foodDesc" placeholder="What would you like to eat?">
+			      <span class="input-group-btn">
+			        <button class="btn btn-secondary" type="button" ng-model="narrowBtn" ng-click="list.narrowItems()">Narrow It Down For Me!</button>
+			      </span>
+			    </div>
+			    <br>
+			</div>
+		</div>
+		<div class="row">
+			<found-items
+				items="list.menuItems"
+				on-remove="list.removeItem(index)"
+			></found-items>
+		</div>
+		<br>
+	</div>
+</body>
+</html>
